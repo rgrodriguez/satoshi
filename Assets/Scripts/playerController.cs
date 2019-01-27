@@ -77,6 +77,10 @@ public class playerController : MonoBehaviour {
         {
             other.gameObject.SetActive(false);
         }
+        else
+        {
+            other.gameObject.SetActive(true);
+        }
     }
 
     float EaseCubicInOut(float t, float b, float c, float d)
