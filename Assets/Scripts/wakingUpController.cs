@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class wakingUpController : MonoBehaviour
 {
@@ -41,9 +42,10 @@ public class wakingUpController : MonoBehaviour
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+        float moveCombined = Math.Min(Math.Abs(moveHorizontal) + Math.Abs(moveVertical), 1.0f);
 
         // Increase the volume a set amount every time movement axis value increases
-        if (moveHorizontal > lastMoveHorizontal)
+        if (moveCombined > lastMoveHorizontal)
         {
             volume += VolumeStep;
 
@@ -98,7 +100,7 @@ public class wakingUpController : MonoBehaviour
         }
 
         // Save the last value for movement axis
-        lastMoveHorizontal = moveHorizontal;
+        lastMoveHorizontal = moveCombined;
 
         // Set scale the internal volume to an exponential scale
         audioData.volume = EaseCubicInOut(volume, 0, 1, 1) * VolumeScale;
