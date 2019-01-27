@@ -27,5 +27,9 @@ public class playerController : MonoBehaviour {
         {
             other.gameObject.SetActive(false);
         }
+        else
+        {
+            other.gameObject.SetActive(true);
+        }
     }
 }

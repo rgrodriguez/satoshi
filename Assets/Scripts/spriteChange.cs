@@ -15,7 +15,7 @@ public class spriteChange : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetKey(KeyCode.D))) {
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
             if (this.gameObject.GetComponent<SpriteRenderer>().sprite == rightWalk) {
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = rightWalkAlt;
              }
@@ -24,7 +24,7 @@ public class spriteChange : MonoBehaviour
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = rightWalk;
             }
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             if (this.gameObject.GetComponent<SpriteRenderer>().sprite == downWalk)
             {
@@ -35,7 +35,7 @@ public class spriteChange : MonoBehaviour
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = downWalk;
             }
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             if (this.gameObject.GetComponent<SpriteRenderer>().sprite == leftWalk)
             {
@@ -46,7 +46,7 @@ public class spriteChange : MonoBehaviour
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = leftWalk;
             }
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             if (this.gameObject.GetComponent<SpriteRenderer>().sprite == upWalk)
             {
