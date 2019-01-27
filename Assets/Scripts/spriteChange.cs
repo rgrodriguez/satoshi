@@ -13,10 +13,6 @@ public class spriteChange : MonoBehaviour
     public Sprite leftWalkAlt;
     public Sprite upWalkAlt;
 
-    float timer = 1f;
-    float delay = 1f;
-
-    // Update is called once per frame
     void Update()
     {
         if ((Input.GetKey(KeyCode.D))) {

@@ -20,4 +20,13 @@ public class playerController : MonoBehaviour {
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         rb2d.AddForce(movement * speed);
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Changable"))
+        {
+            other.gameObject.SetActive(false);
+        }
+        other.gameObject.SetActive(false);
+    }
 }
