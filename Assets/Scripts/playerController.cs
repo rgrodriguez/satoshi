@@ -23,10 +23,9 @@ public class playerController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Changable"))
+        if (other.gameObject.CompareTag("Changable") || other.gameObject.CompareTag("frontDoor"))
         {
             other.gameObject.SetActive(false);
         }
-        other.gameObject.SetActive(false);
     }
 }
