@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Edible
   - Changable
+  - frontDoor
   layers:
   - Default
   - TransparentFX
