@@ -6,6 +6,7 @@ using System;
 public class playerController : MonoBehaviour {
 
     public float speed;
+    public AudioSource[] sheetsSounds;
 
     private Rigidbody2D rb2d;
     private bool isWakingUp = true;
@@ -45,6 +46,9 @@ public class playerController : MonoBehaviour {
                 referenceX = transform.position.x;
 
                 struggleRating += 0.1f;
+
+                int index = UnityEngine.Random.Range(0, 4);
+                sheetsSounds[index].Play();
             }
         }
         else
