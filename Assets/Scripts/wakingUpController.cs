@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class wakingUpController : MonoBehaviour
 {
+    private const float VolumeScale = 10.0f;
     private const float VolumeStep = 0.01f;
     private const float VolumeDecayFactor = 0.05f;
     private const float VolumeDecayIntervalInS = 0.03f;
-    private const float MinimumVolume = 0.15f;
+    private const float MinimumVolume = 0.075f;
 
     private AudioSource audioData;
     private float timer = 0.0f;
@@ -62,7 +63,7 @@ public class wakingUpController : MonoBehaviour
         lastMoveHorizontal = moveHorizontal;
 
         // Set scale the internal volume to an exponential scale
-        audioData.volume = EaseCubicInOut(volume, 0, 1, 1);
+        audioData.volume = EaseCubicInOut(volume, 0, 1, 1) * VolumeScale;
     }
 
     float EaseCubicInOut(float t, float b, float c, float d)
