@@ -10,8 +10,8 @@ public class wakingUpController : MonoBehaviour
     private const float VolumeDecayFactor = 0.05f;
     private const float VolumeDecayIntervalInS = 0.03f;
     private const float GirlStationaryVolume = 0.07f;
-    private const float GirlStrugglingVolume = GirlStationaryVolume * 1.5f;
-    private const float GirlStrugglingMaximumVolume = GirlStationaryVolume * 2.3f;
+    private const float GirlStrugglingVolume = GirlStationaryVolume * 1.9f;
+    private const float GirlStrugglingMaximumVolume = GirlStationaryVolume * 2.9f;
     private const float DisplayIntervalInS = 0.1f;
     private const float DurationToStayInStrugglingStateInS = 1.0f;
 
