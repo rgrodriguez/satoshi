@@ -5,11 +5,12 @@ using UnityEngine;
 public class wakingUpController : MonoBehaviour
 {
     private const float VolumeScale = 10.0f;
-    private const float VolumeStep = 0.01f;
+    private const float VolumeStep = 0.02f;
     private const float VolumeDecayFactor = 0.05f;
     private const float VolumeDecayIntervalInS = 0.03f;
     private const float GirlStationaryVolume = 0.07f;
-    private const float GirlStrugglingVolume = GirlStationaryVolume * 1.8f;
+    private const float GirlStrugglingVolume = GirlStationaryVolume * 1.5f;
+    private const float GirlStrugglingMaximumVolume = GirlStationaryVolume * 2.3f;
     private const float DisplayIntervalInS = 0.1f;
     private const float DurationToStayInStrugglingStateInS = 1.0f;
 
@@ -82,6 +83,13 @@ public class wakingUpController : MonoBehaviour
             volume = minimumVolume;
         }
 
+        // Cap the volume
+        if (volume > GirlStrugglingMaximumVolume)
+        {
+            volume = GirlStrugglingMaximumVolume;
+        }
+
+        // Display volume for debug
         if (displayTimer > DisplayIntervalInS)
         {
             displayTimer = 0.0f;
