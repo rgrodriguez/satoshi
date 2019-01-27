@@ -8,11 +8,13 @@ public class wakingUpController : MonoBehaviour
     private const float VolumeStep = 0.01f;
     private const float VolumeDecayFactor = 0.05f;
     private const float VolumeDecayIntervalInS = 0.03f;
-    private const float MinimumVolume = 0.075f;
+    private const float GirlStationaryVolume = 0.07f;
+    private const float GirlStrugglingVolume = GirlStationaryVolume * 1.7f;
 
     private AudioSource audioData;
     private float timer = 0.0f;
-    private float volume = MinimumVolume;
+    private float lastInputChangeTimer = 0.0f;
+    private float volume = GirlStationaryVolume;
     private float lastMoveHorizontal = 0.0f;
 
     // Start is called before the first frame update
@@ -27,6 +29,7 @@ public class wakingUpController : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+        lastInputChangeTimer -= Time.deltaTime;
 
         // Build up the volume if the input occurs repeatedly
 
@@ -37,6 +40,9 @@ public class wakingUpController : MonoBehaviour
         if (moveHorizontal > lastMoveHorizontal)
         {
             volume += VolumeStep;
+
+            // Set the countdown until the volume goes back to stationary level
+            lastInputChangeTimer = 0.75f;
 
             Debug.Log($"increased volume to {volume}");
         }
@@ -50,10 +56,23 @@ public class wakingUpController : MonoBehaviour
             // Reduce the volume by one step
             volume *= 1.0f - VolumeDecayFactor;
 
-            // Keep volume at minimum value
-            if (volume < MinimumVolume)
+            // Decide which minimum volume value to use
+
+            float minimumVolume;
+
+            if (lastInputChangeTimer <= 0.0f)
             {
-                volume = MinimumVolume;
+                minimumVolume = GirlStationaryVolume;
+            }
+            else
+            {
+                minimumVolume = GirlStrugglingVolume;
+            }
+
+            // Keep volume at the chosen minimum value
+            if (volume < minimumVolume)
+            {
+                volume = minimumVolume;
             }
 
             Debug.Log($"decreased volume to {volume}");
